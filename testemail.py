@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
+from selenium import webdriver
 
 class AppDynamicsJob(unittest.TestCase):
     def setUp(self):
@@ -21,13 +22,12 @@ class AppDynamicsJob(unittest.TestCase):
         driver = self.driver
         driver.get("https://mail.ru/")
         driver.find_element_by_id("mailbox:login").click()
-        driver.find_element_by_id("mailbox:login").click()
-        driver.find_element_by_id("mailbox:login").click()
-        # ERROR: Caught exception [ERROR: Unsupported command [doubleClick | id=mailbox:login | ]]
+        driver.find_element_by_id("mailbox:login").send_keys("graf-igi")
         driver.find_element_by_xpath(u"//input[@value='Ввести пароль']").click()
         driver.find_element_by_id("mailbox:password").clear()
         driver.find_element_by_id("mailbox:password").send_keys("igi1987")
         driver.find_element_by_xpath(u"//input[@value='Ввести пароль']").click()
+        time.sleep(4)
         driver.find_element_by_id("PH_logoutLink").click()
     
     def is_element_present(self, how, what):
