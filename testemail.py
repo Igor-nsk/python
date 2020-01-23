@@ -20,6 +20,7 @@ class AppDynamicsJob(unittest.TestCase):
     
     def test_app_dynamics_job(self):
         driver = self.driver
+        # open home page
         driver.get("https://mail.ru/")
         driver.find_element_by_id("mailbox:login").click()
         driver.find_element_by_id("mailbox:login").send_keys("pithonich")
