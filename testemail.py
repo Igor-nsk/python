@@ -22,10 +22,10 @@ class AppDynamicsJob(unittest.TestCase):
         driver = self.driver
         driver.get("https://mail.ru/")
         driver.find_element_by_id("mailbox:login").click()
-        driver.find_element_by_id("mailbox:login").send_keys("graf-igi")
+        driver.find_element_by_id("mailbox:login").send_keys("pithonich")
         driver.find_element_by_xpath(u"//input[@value='Ввести пароль']").click()
         driver.find_element_by_id("mailbox:password").clear()
-        driver.find_element_by_id("mailbox:password").send_keys("igi1987")
+        driver.find_element_by_id("mailbox:password").send_keys("gbnjysxhekbnn")
         driver.find_element_by_xpath(u"//input[@value='Ввести пароль']").click()
         time.sleep(4)
         driver.find_element_by_id("PH_logoutLink").click()
