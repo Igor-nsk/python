@@ -20,7 +20,7 @@ class AppDynamicsJob(unittest.TestCase):
         driver = self.driver
         # open home page
         driver.get("https://mail.ru/")
-        self.login(driver)
+        self.login(driver, username = "pithonich", password="gbnjysxhekbnn")
         self.send_email(driver)
 
         driver.find_element_by_id("PH_logoutLink").click()
@@ -43,12 +43,12 @@ class AppDynamicsJob(unittest.TestCase):
         driver.find_element_by_xpath(
             "//div[@id='app-canvas']/div/div/div/div/div[2]/div/div/div/div/div[2]/div/div/nav/a/div/div[2]/div").click()
 
-    def login(self, driver, username="pithonich"):
+    def login(self, driver, username, password):
         driver.find_element_by_id("mailbox:login").click()
         driver.find_element_by_id("mailbox:login").send_keys("%s" % username)
         driver.find_element_by_xpath(u"//input[@value='Ввести пароль']").click()
         driver.find_element_by_id("mailbox:password").clear()
-        driver.find_element_by_id("mailbox:password").send_keys("gbnjysxhekbnn")
+        driver.find_element_by_id("mailbox:password").send_keys("%s" % password)
         driver.find_element_by_xpath(u"//input[@value='Ввести пароль']").click()
         time.sleep(4)
 
