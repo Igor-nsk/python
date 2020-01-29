@@ -8,6 +8,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time
 from selenium import webdriver
 
+
 class AppDynamicsJob(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
@@ -15,12 +16,12 @@ class AppDynamicsJob(unittest.TestCase):
         self.base_url = "https://www.google.com/"
         self.verificationErrors = []
         self.accept_next_alert = True
-    
+
     def test_app_dynamics_job(self):
         driver = self.driver
         # open home page
         driver.get("https://mail.ru/")
-        self.login(driver, username = "pithonich", password="gbnjysxhekbnn")
+        self.login(driver, username="pithonich", password="gbnjysxhekbnn")
         self.send_email(driver)
 
         driver.find_element_by_id("PH_logoutLink").click()
@@ -53,15 +54,19 @@ class AppDynamicsJob(unittest.TestCase):
         time.sleep(4)
 
     def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e: return False
+        try:
+            self.driver.find_element(by=how, value=what)
+        except NoSuchElementException as e:
+            return False
         return True
-    
+
     def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException as e: return False
+        try:
+            self.driver.switch_to_alert()
+        except NoAlertPresentException as e:
+            return False
         return True
-    
+
     def close_alert_and_get_its_text(self):
         try:
             alert = self.driver.switch_to_alert()
@@ -71,12 +76,14 @@ class AppDynamicsJob(unittest.TestCase):
             else:
                 alert.dismiss()
             return alert_text
-        finally: self.accept_next_alert = True
-    
+        finally:
+            self.accept_next_alert = True
+
     def tearDown(self):
         # To know more about the difference between verify and assert,
         # visit https://www.seleniumhq.org/docs/06_test_design_considerations.jsp#validating-results
         self.assertEqual([], self.verificationErrors)
+
 
 if __name__ == "__main__":
     unittest.main()
